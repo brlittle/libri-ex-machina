@@ -313,7 +313,6 @@ describe("bookCoverByISBN", () => {
 
   test("is synchronous (returns a string, not a Promise)", () => {
     const result = bookCoverByISBN("0451524934");
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect((result as any) instanceof Promise).toBe(false);
     expect(typeof result).toBe("string");
   });
