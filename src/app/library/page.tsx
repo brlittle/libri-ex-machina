@@ -2170,13 +2170,13 @@ function ShelfRow({
           </button>
         ))}
       </div>
-      {/* Wood shelf surface */}
+      {/* Metal shelf surface */}
       <div
-        className="h-4 w-full rounded-b-sm"
+        className="h-5 w-full"
         style={{
           background:
-            "linear-gradient(to bottom, #6B4C2A 0%, #4A3520 40%, #3A2818 100%)",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.5)",
+            "linear-gradient(to bottom, #d4dce8 0%, #8fa1b4 12%, #607585 30%, #475e72 58%, #2e3f52 80%, #192535 100%)",
+          boxShadow: "0 5px 14px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.18)",
         }}
       />
       {/* Shelf shadow */}
