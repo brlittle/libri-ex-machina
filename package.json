@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "prisma generate && prisma db push && next build",
-    "start": "next start",
+    "dev": "NODE_OPTIONS='--require ./node-compat.cjs' next dev --turbopack",
+    "build": "prisma generate && prisma db push && NODE_OPTIONS='--require ./node-compat.cjs' next build",
+    "start": "NODE_OPTIONS='--require ./node-compat.cjs' next start",
     "lint": "next lint",
     "test": "vitest",
     "setup": "npm install && npx prisma generate && npx prisma db push"
