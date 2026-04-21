@@ -1,0 +1,6 @@
+type,title,creator,year,genre,rating,description,tags,isbn,publisher,series,seriesPosition,narrator,audiobookFormat,asin,studio,mediaFormat,region,label,musicFormat,catalogNumber,mediaCondition,coverCondition,platform,condition
+book,The Name of the Wind,Patrick Rothfuss,2007,Fantasy,5,"The tale of Kvothe, magician and musician, told in his own words.",fantasy;epic,9780756404079,DAW Books,The Kingkiller Chronicle,Book 1,,,,,,,,,,,,,,
+audiobook,Project Hail Mary,Andy Weir,2021,Science Fiction,5,A lone astronaut must save the Earth — and discovers something bigger.,sci-fi;space,,,,,,Audible,B08G9PRS1K,,,,,,,,,,,
+movie,Arrival,Denis Villeneuve,2016,Science Fiction,5,A linguist is recruited to communicate with alien lifeforms.,sci-fi;linguistics;cerebral,,,,,,,,Paramount Pictures,Blu-ray,Region A,,,,,,,
+music,In Rainbows,Radiohead,2007,Alternative Rock,5,"Radiohead's seventh album, originally released pay-what-you-want.",radiohead;art-rock,,,,,,,,,,,,XL Recordings,Vinyl,XLCD324,Near Mint,Near Mint,,
+game,Disco Elysium,ZA/UM,2019,RPG,5,A unique role-playing game with no combat — purely narrative and detective work.,rpg;detective;surreal,,,,,,,,,,,,,,,,PC,
