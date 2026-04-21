@@ -1,13 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { SignInForm } from "@/components/auth/SignInForm";
-import { SignUpForm } from "@/components/auth/SignUpForm";
 import { Suspense } from "react";
 
 function LoginContent() {
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -32,31 +29,8 @@ function LoginContent() {
         {/* Card */}
         <div className="rounded-2xl border border-stone-800 p-7"
              style={{ background: "rgba(18,18,36,0.9)" }}>
-          <h2 className="text-base font-medium text-stone-200 mb-5">
-            {mode === "signin" ? "Sign in" : "Create account"}
-          </h2>
-
-          {mode === "signin"
-            ? <SignInForm onSuccess={handleSuccess} />
-            : <SignUpForm onSuccess={handleSuccess} />}
-
-          <p className="mt-5 text-center text-xs text-stone-500">
-            {mode === "signin" ? (
-              <>No account?{" "}
-                <button onClick={() => setMode("signup")}
-                        className="text-stone-300 hover:text-stone-100 underline underline-offset-2">
-                  Sign up
-                </button>
-              </>
-            ) : (
-              <>Already have one?{" "}
-                <button onClick={() => setMode("signin")}
-                        className="text-stone-300 hover:text-stone-100 underline underline-offset-2">
-                  Sign in
-                </button>
-              </>
-            )}
-          </p>
+          <h2 className="text-base font-medium text-stone-200 mb-5">Sign in</h2>
+          <SignInForm onSuccess={handleSuccess} />
         </div>
 
       </div>
