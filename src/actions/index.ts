@@ -73,8 +73,7 @@ export async function signIn(
 
 export async function signOut() {
   await deleteSession();
-  revalidatePath("/library");
-  redirect("/library");
+  redirect("/login");
 }
 
 export async function getUser() {

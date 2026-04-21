@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { verifySession } from "@/lib/auth";
 
-// Routes that require an authenticated session
-const PROTECTED_PATHS = ["/api/library"];
+// API routes that require auth — return 401 when unauthenticated
+const PROTECTED_API_PATHS = ["/api/library"];
+
+// Page routes that require auth — redirect to /login when unauthenticated
+const PROTECTED_PAGE_PATHS = ["/library"];
 
 // Mutating methods that must pass the CSRF check
 const MUTATING_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
@@ -47,15 +50,30 @@ export async function middleware(request: NextRequest) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
-  // Auth check — applies to explicitly protected API routes
-  const isProtectedPath = PROTECTED_PATHS.some((p) => pathname.startsWith(p));
-  if (isProtectedPath) {
+  // Auth check — API routes return 401, page routes redirect to /login
+  const isProtectedApi = PROTECTED_API_PATHS.some((p) => pathname.startsWith(p));
+  const isProtectedPage = PROTECTED_PAGE_PATHS.some((p) => pathname.startsWith(p));
+
+  if (isProtectedApi || isProtectedPage) {
     const session = await verifySession(request);
     if (!session) {
-      return NextResponse.json(
-        { error: "Authentication required" },
-        { status: 401 }
-      );
+      if (isProtectedApi) {
+        return NextResponse.json(
+          { error: "Authentication required" },
+          { status: 401 }
+        );
+      }
+      const loginUrl = new URL("/login", request.url);
+      loginUrl.searchParams.set("next", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+  }
+
+  // Redirect authenticated users away from /login back to the app
+  if (pathname === "/login") {
+    const session = await verifySession(request);
+    if (session) {
+      return NextResponse.redirect(new URL("/library", request.url));
     }
   }
 

@@ -43,7 +43,7 @@ export function AuthDialog({
           <DialogDescription>
             {mode === "signin"
               ? "Sign in to your account to continue"
-              : "Sign up to start creating AI-powered React components"}
+              : "Create an account to access your library"}
           </DialogDescription>
         </DialogHeader>
 
