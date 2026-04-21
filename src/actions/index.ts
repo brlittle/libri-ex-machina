@@ -1,6 +1,6 @@
 "use server";
 
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { createSession, deleteSession, getSession } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
@@ -39,7 +39,8 @@ export async function signUp(
     return { success: true };
   } catch (error) {
     console.error("Sign up error:", error);
-    return { success: false, error: "An error occurred during sign up" };
+    const msg = error instanceof Error ? error.message : String(error);
+    return { success: false, error: msg || "An error occurred during sign up" };
   }
 }
 
